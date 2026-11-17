@@ -1,0 +1,29 @@
+# Compilação e pacotes gerados
+/target/
+/out/
+/build/
+/bin/
+*.class
+*.jar
+
+# Configurações locais do IntelliJ e de outras IDEs
+/.idea/
+*.iml
+/.vscode/
+/.classpath
+/.project
+/.settings/
+
+# Arquivos locais
+*.log
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db
+Desktop.ini
+/saves/
+
+# Preferências locais de ferramentas e credenciais
+.env
+.env.*
+!.env.example

@@ -1,0 +1,31 @@
+DINO ADVENTURE - ABRIR NO WINDOWS
+
+1. Clique com o botao direito no ZIP e escolha Extrair tudo.
+2. Abra a pasta extraida.
+3. De dois cliques em JOGAR.bat.
+
+O jogo ja esta compilado em dist/dino-adventure.jar.
+Nao precisa instalar Maven ou configurar o IntelliJ para usar esse atalho.
+Precisa de Java 17 ou superior. O atalho procura tambem nos JDKs baixados
+pelo IntelliJ na pasta .jdks do usuario, alem de instalacoes comuns.
+
+IMAGENS
+As imagens originais nao estavam no material recebido.
+Copie-as para src/main/resources/assets, mantendo nomes e subpastas.
+Nao crie assets/assets por engano. Ha um guia README.md dentro dessa pasta.
+O atalho abre o JAR com essa pasta como diretorio de trabalho, permitindo
+ler as imagens externas sem recompilar. Antes de publicar uma versao
+com as imagens dentro do JAR, recompile com mvn clean verify.
+Sem imagens, o programa abre, mas o personagem e telas podem nao aparecer.
+
+PARA EDITAR NO INTELLIJ
+Escolha File > Open e selecione pom.xml, nesta mesma pasta.
+Escolha Open as Project e aguarde a importacao Maven.
+Selecione um JDK 17 ou superior se a IDE solicitar.
+Execute a classe br.com.dinoadventure.app.Main.
+Tambem ha uma configuracao compartilhada em .run/.
+
+GITHUB
+Publique os fontes e a documentacao. Arquivos JAR sao ignorados pelo Git;
+para distribuicao, anexe o JAR compilado em uma Release.
+Leia docs/PUBLICAR_NO_GITHUB.md para os passos de publicacao.

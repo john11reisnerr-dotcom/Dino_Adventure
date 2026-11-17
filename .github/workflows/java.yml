@@ -1,0 +1,46 @@
+name: Verificar projeto Java
+
+on:
+    push:
+    pull_request:
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+jobs:
+    verificar:
+        name: ${{ matrix.os }} / Java ${{ matrix.java }}
+        runs-on: ${{ matrix.os }}
+        strategy:
+            fail-fast: false
+            matrix:
+                os: [ubuntu-latest, windows-latest]
+                java: ['17']
+                include:
+                    - os: ubuntu-latest
+                      java: '21'
+        steps:
+            - uses: actions/checkout@v4
+            - name: Preparar Java
+              uses: actions/setup-java@v4
+              with:
+                  distribution: temurin
+                  java-version: ${{ matrix.java }}
+                  cache: maven
+            - name: Compilar, testar e empacotar
+              run: mvn --batch-mode --no-transfer-progress clean verify
+            - name: Disponibilizar JAR
+              if: matrix.os == 'ubuntu-latest' && matrix.java == '17'
+              uses: actions/upload-artifact@v4
+              with:
+                  name: dino-adventure-jar
+                  path: target/dino-adventure.jar
+                  if-no-files-found: error
+            - name: Disponibilizar relatórios de testes
+              if: always()
+              uses: actions/upload-artifact@v4
+              with:
+                  name: testes-${{ matrix.os }}-java-${{ matrix.java }}
+                  path: target/surefire-reports/
+                  if-no-files-found: ignore
